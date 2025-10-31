@@ -1,0 +1,144 @@
+/* Body */
+body {
+    margin: 0px;
+    font-family: 'Times New Roman', Times, serif;
+} 
+
+/* Typography */
+
+h1 {
+    color: black;
+    font-size: 40px;
+}
+
+
+/* Header */
+
+header {
+    margin: 0px;
+    padding: 10px;
+    /* text-align: center; */
+    background: purple;
+}
+
+
+/* Menu */
+
+/* .menuItem {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    padding: 0px;
+    width: auto;
+    align-items: flex-start;
+} */
+
+.menuList {
+    display: flex;
+    align-items: center;
+    width: auto;
+    margin: 0px;
+    padding: 0px;
+}
+
+#emoji {
+    font-size: 70px;
+}
+
+.subMenuItems {
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    margin: 0px 0px 0px 10px;
+}
+
+.itemName {
+    font-size: 25px;
+}
+
+.itemDescription {
+    font-size: 15px;
+}
+
+.itemPrice {
+    font-size: 20px;
+}
+
+.addToOrderBtns {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    border: 1px solid gray;
+    background: none;
+    color: black;
+    margin-left: auto;
+}
+
+/* Order Summary */
+
+.orderItemInner {
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    width: auto;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.orderInnerLeft {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.orderItemName {
+    font-size: 20px;
+    padding-right: 15px;
+    
+}
+
+.itemRemoveBtn {
+    width: 60px;
+    height: 20px;
+    font-size: 10px;
+    background: none;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+}
+
+
+.orderItemPrice {
+    justify-content: flex-end;
+    font-size: 20px;
+}
+
+
+
+/* Payment Modal */
+
+#payment-modal {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+    margin: 0px;
+    padding: 10px;
+    text-align: center;
+}
+
+#thank-you-modal {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+    margin: 0px;
+    padding: 10px;
+    text-align: center;
+}
+
+#pay-btn {
+    width: 50px;
+}
+
+/* Thank you Modal */
+

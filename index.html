@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+
+    <body>
+
+        <!-- Header -->
+        <header>
+            <h1>Lau's Diner</h1>
+            <h2>Insert slogan here</h2>
+        </header>
+
+        <main>
+        <!-- Menu -->
+            <div class="menu" id="menu">
+                <!-- menu goes here -->
+                 <div class="addToOrderBtns">
+                    <!-- add to order buttons -->
+                 </div>
+            </div>
+        <!-- Order Summary -->
+            <div class="orderSummary" id="orderSummary">
+                <!-- order summary goes here -->
+                 
+            </div>
+
+            <button id="order-btn">Complete Order</button>
+
+        </main>
+
+        <!-- Payment Modal -->
+        <div id="payment-modal">
+
+                <h2>Enter Card Details</h2>
+
+                <form id="payment-form">
+                    <input type="text" placeholder="Enter your name" name="oderName" id="orderName" required>
+                    <input type="number" placeholder="Enter card number" required>
+                    <input type="number" placeholder="Enter CVV" required>
+                    <button id="pay-btn" type="submit">Pay</button>
+                </form>
+        </div>
+
+        <div id="thank-you-modal">
+            <!-- add in JS? -->
+            <p id="thank-you-name">thank you, (name) order is on the way</p>
+        </div>
+        
+        <script src="index.js" type="module"></script>
+
+    </body>
+
+
+</html>
