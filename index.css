@@ -126,6 +126,12 @@ header {
     text-align: center;
 }
 
+#pay-btn {
+    width: 50px;
+}
+
+/* Thank you Modal */
+
 #thank-you-modal {
     display: none;
     flex-direction: column;
@@ -136,9 +142,6 @@ header {
     text-align: center;
 }
 
-#pay-btn {
-    width: 50px;
+.thankYouClass {
+    display: flex;
 }
-
-/* Thank you Modal */
-

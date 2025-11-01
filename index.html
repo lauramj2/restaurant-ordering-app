@@ -17,14 +17,11 @@
         <!-- Menu -->
             <div class="menu" id="menu">
                 <!-- menu goes here -->
-                 <div class="addToOrderBtns">
-                    <!-- add to order buttons -->
-                 </div>
             </div>
+
         <!-- Order Summary -->
             <div class="orderSummary" id="orderSummary">
                 <!-- order summary goes here -->
-                 
             </div>
 
             <button id="order-btn">Complete Order</button>
@@ -37,16 +34,14 @@
                 <h2>Enter Card Details</h2>
 
                 <form id="payment-form">
-                    <input type="text" placeholder="Enter your name" name="oderName" id="orderName" required>
+                    <input type="text" placeholder="Enter your name" name="orderName" id="orderName" required>
                     <input type="number" placeholder="Enter card number" required>
                     <input type="number" placeholder="Enter CVV" required>
-                    <button id="pay-btn" type="submit">Pay</button>
+                    <button id="pay-btn" type="button">Pay</button>
                 </form>
         </div>
 
         <div id="thank-you-modal">
-            <!-- add in JS? -->
-            <p id="thank-you-name">thank you, (name) order is on the way</p>
         </div>
         
         <script src="index.js" type="module"></script>

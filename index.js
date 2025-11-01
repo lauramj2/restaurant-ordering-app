@@ -2,7 +2,8 @@ import { menuArray } from "./data.js"
 
 
 const orderBtn = document.getElementById("order-btn")
-const paymentForm = document.getElementById("payment-form")
+// const paymentForm = document.getElementById("payment-form")
+// const payBtn = document.getElementById("pay-btn")
 
 
 function getMenuHtml(){
@@ -24,6 +25,7 @@ function getMenuHtml(){
     })
     return menuHtml
 }
+
 
 // const list = document.getElementById("list")
 // orderList = []
@@ -47,7 +49,11 @@ function getOrderHtml(){
     return orderHtml
 }
 
-
+document.addEventListener("click", function(e){
+    if (e.target.dataset.item){
+        getOrderHtml(e.target.dataset.item)
+    }
+})
 
 function render(){
     document.getElementById("menu").innerHTML = getMenuHtml()
@@ -85,12 +91,22 @@ orderBtn.addEventListener("click", function(){
 })
 
 
-// Hides modal upon submit....not sure if this should be how thats done. need to make it not appear until all fields are filled in 
-
 const payBtn = document.getElementById("pay-btn")
-const thankYouModal = document.getElementById("thank-you-modal")
+
 payBtn.addEventListener("click", function(){
+
+    const orderName = document.getElementById("orderName")
+    const thankYouModal = document.getElementById("thank-you-modal")
+
     thankYouModal.style.display="flex"
+    
+    const thankYouName = orderName.value
+    thankYouModal.innerHTML += `thank you, ${thankYouName}. Your order is on the way.`
+
+    // Hides modal upon submit....not sure if this should be how thats done. need to make it not appear until all fields are filled in 
+
+    const paymentModal = document.getElementById("payment-modal")
+    paymentModal.style.display="none"
 })
 
 
@@ -98,29 +114,4 @@ payBtn.addEventListener("click", function(){
 
 // paymentForm.addEventListener("submit", function(e){
 //     e.preventDefault()
-//     const nameFormData = new FormData(paymentForm)
-//     const name = nameFormData.get("orderName")
-
-//     function getNameHtml() {
-//     const thankYouName = document.getElementById("thank-you-name")
-//     let nameHtml = ""
-//     nameHtml += `<p id="thank-you-name">thank you, ${name}. order is on the way</p>`
 // }
-
-// })
-
-// function getNameHtml() {
-//     const thankYouName = document.getElementById("thank-you-name")
-//     let nameHtml = ""
-//     nameHtml += `<p id="thank-you-name">thank you, ${name} order is on the way</p>`
-// }
-
-// function orderNameTest(){
-//     document.getElementById("thank-you-name").innerHTML = getNameHtml()
-// }
-
-// orderNameTest()
-    
-
-// })
-
