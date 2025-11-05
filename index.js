@@ -2,79 +2,33 @@ import { menuArray } from "./data.js"
 
 
 const orderBtn = document.getElementById("order-btn")
+const menu = document.getElementById("menu")
+const orderSummary = document.getElementById("orderSummary")
+const priceSummary = document.getElementById("totalPriceSection")
+const orderBtnDiv = document.getElementById("orderBtnDiv")
+
+let cart = []
+let totalPrice = 0
+
+
 // const paymentForm = document.getElementById("payment-form")
 // const payBtn = document.getElementById("pay-btn")
 
 
-function getMenuHtml(){
-    let menuHtml = ""
-    menuArray.forEach(function(items){
-        menuHtml += `
-                <div class="menuItem">
-                    <div class="menuList">
-                        <span id="emoji">${items.emoji}</span>
-                        <div class="subMenuItems">
-                            <h2 class="itemName" data-item="${items.id}">${items.name}</h2>
-                            <p class="itemDescription" data-item="${items.id}">${items.ingredients}</p>
-                            <h3 class="itemPrice" data-item="${items.id}">$${items.price}</3>
-                        </div>
-                        <button class="addToOrderBtns" id="${items.id}"><i class="fa-solid fa-plus"></i></button>
-                    </div>
-                </div>
-                `
-    })
-    return menuHtml
-}
-
-
-// const list = document.getElementById("list")
-// orderList = []
-function getOrderHtml(){
-    let orderHtml = ""
-    menuArray.forEach(function(items){
-        orderHtml += `
-                    <ul class="list" type="list">
-                        <div class="orderItemInner">
-                            <div class="orderInnerLeft">
-                                <p class="orderItemName" data-item="${items.id}">${items.name}</p>
-                                <button class="itemRemoveBtn" data-item="${items.name}">Remove</button>
-                            </div>
-                            <div class="orderItemPrice">
-                                <p data-item="${items.id}">$${items.price}</p>
-                            </div>
-                        </div>
-                    </ul>
-                `
-    })
-    return orderHtml
-}
-
 document.addEventListener("click", function(e){
-    if (e.target.dataset.item){
-        getOrderHtml(e.target.dataset.item)
+    if (e.target.dataset.add){
+        // document.getElementById(e.target.dataset.add).parentElement.style.backgroundColor = "lightblue"
+        addToOrder(e.target.dataset.add)
+    }
+    else if (e.target.dataset.remove){
+        removeFromOrder(e.target.dataset.remove)
+        // document.getElementById(e.target.dataset.remove).parentElement.style.backgroundColor = "lightblue"
     }
 })
 
-function render(){
-    document.getElementById("menu").innerHTML = getMenuHtml()
-    document.getElementById("orderSummary").innerHTML = getOrderHtml()
-}
-
-
-render()
 
 
 
-// On click (add item) Button, add to list - use data attributes to tie each button to their item?
-
-
-// const list = document.getElementById("list")
-
-// addItemBtn.addEventListener("click", function(){
-//     orderList = []
-    
-//     orderList.push()
-// })
 
 // Complete order button and payment form appear
 
@@ -110,8 +64,188 @@ payBtn.addEventListener("click", function(){
 })
 
 
+
+
+
+
+function addToOrder(itemId){
+    const targetMenuObj = menuArray.filter(function(item) {
+        return item.id === itemId
+    })[0]
+    // if (!cart.includes(targetMenuObj)) {
+    //     cart.push(targetMenuObj)
+    //     renderOrderSection()
+    // }
+    cart.push(targetMenuObj)
+    totalPrice += targetMenuObj.price
+    renderOrderSection()
+    renderPriceSection()
+}
+
+function removeFromOrder(itemId){
+    const targetMenuObj = menuArray.find(obj => obj.id === itemId)
+
+    if (cart.includes(targetMenuObj)) {
+        const index = cart.indexOf(targetMenuObj)
+        cart.splice(index, 1)
+
+        totalPrice -= targetMenuObj.price
+        renderOrderSection()
+        renderPriceSection()
+    }
+}
+
+function getPriceHtml() {
+    let priceHtml = ""
+    priceHtml += `<div>$${totalPrice}</div>`
+    return priceHtml
+}
+
+function getOrderHtml(){
+    let orderHtml = ""
+    cart.map(function(cartItem) {
+        const {name, price, id} = cartItem
+        orderHtml +=  `<div class="orderItemInner">
+                            <p class="orderItemName">${cartItem.name}</p>
+                            <button class="itemRemoveBtn" data-remove="${cartItem.id}">remove</button>
+                            <p class="orderItemPrice" data-price="${cartItem.id}">$${cartItem.price}</p>
+                        </div>` 
+    })
+    return orderHtml
+}
+
+function getMenuHtml(menuArr){
+    //menuArr is stand in parameter for array that will be mapped over
+    return menuArr.map(item => {
+    //.map -> mapping over array to produce html string
+    //item parameter reps each object inside of the array
+        const {name,
+                ingredients,
+                price,
+                emoji,
+                id} = item
+        //deconstructing object so can get each individual item to use in html template below
+        return `<div class="menuItem">
+                    <div class="menuList">
+                        <span id="emoji">${item.emoji}</span>
+                        <div class="subMenuItems">
+                            <h2 class="itemName" data-name="${item.id}">${item.name}</h2>
+                            <p class="itemDescription">${item.ingredients}</p>
+                            <h3 class="itemPrice" data-price="${item.id}">$${item.price}</3>
+                        </div>
+                        <button class="addToOrderBtns" data-add="${item.id}"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>`         
+    }).join("")
+    //join removes commas between objects in array    
+}
+
+function renderOrderSection(){
+    document.getElementById("orderItems").innerHTML = getOrderHtml()
+}
+
+function renderPriceSection(){
+    document.getElementById("totalPrice").innerHTML = getPriceHtml()
+}
+
+function render(){
+    document.getElementById("menu").innerHTML = getMenuHtml(menuArray)
+    // document.getElementById("orderSummary").innerHTML = getMenuHtml()
+}
+
+render()
+
+
+
+
+
+
+
+
+
+
 // // event listener for form that prevents default behaviors and get name input to use in thank you modal
 
 // paymentForm.addEventListener("submit", function(e){
 //     e.preventDefault()
+// }
+
+
+//  return `<ul class="list" id="list" type="list">
+//                     <div class="orderItemInner">
+//                         <div class="orderInnerLeft">
+//                             <p class="orderItemName" data-name="${id}">${name}</p>
+//                             <button class="itemRemoveBtn" data-remove="${id}">Remove</button>
+//                         </div>
+//                         <div class="orderItemPrice">
+//                             <p data-price="${id}">$${price}</p>
+//                         </div>
+//                     </div>
+//                 </ul>`
+//     }).join("")
+
+// const removeBtn = document.getElementsByClassName("itemRemoveBtn")
+
+// removeBtn.addEventListener("click", function(e){
+//     document.getElementById(e.target.id).parentElement.style.backgroundColor = "lightblue"
+// })
+
+
+//<div>
+   // <h3>Total Price: $${totalPrice}</h3>
+//</div>
+
+
+// document.addEventListener("click", function(e){
+//     if (e.target.dataset.add) {
+//         handleAddClick(e.target.dataset.add)
+//     }
+// })
+
+// function handleAddClick(item) {
+//     const targetMenuItem = menuArray.filter(item => {
+//          return item.id === itemId
+//     //looking to see if the id in the data is the same as the is stored in itemId
+//      })[0]
+//     const cart = []
+//     const {name,
+//              price,
+//              id} = targetMenuItem
+//     cart.push(targetMenuItem)
+//     return cart.map(targetMenuItem => {
+//         return document.getElementById("orderSummary").innerHTML += `<ul class="list" type="list">
+//                      <div class="orderItemInner">
+//                          <div class="orderInnerLeft">
+//                              <p class="orderItemName" data-name="${id}">${name}</p>
+//                              <button class="itemRemoveBtn" data-remove="${id}">Remove</button>
+//                          </div>
+//                          <div class="orderItemPrice">
+//                              <p data-price="${id}">$${price}</p>
+//                          </div>
+//                      </div>
+//                  </ul>`
+//      }).join("")
+// }
+
+
+// menu.addEventListener("click", function(e){
+//     // document.getElementById(e.target.id).parentElement.style.backgroundColor = "lightblue"
+//     const purchasedItem = document.getElementById(e.target.id).parentElement
+//     cart.push(purchasedItem)
+//     return document.getElementById("orderSummary").innerHTML = updateCart(cart)
+// })
+
+// function updateCart(cartArr){
+//     return cartArr.map(item => {
+//         const {name,
+//             price,
+//             id} = item
+//         return `<ul class="list" id="list" type="list">
+//                         <div class="orderItemInner">
+//                             <p class="orderItemName" data-name="${id}">${name}</p>
+//                             <button class="itemRemoveBtn" data-remove="${id}">Remove</button>
+//                             <p class="orderItemPrice" data-price="${id}">$${price}</p>
+//                         </div>
+//                 </ul>`
+//     }).join("")
 // }

@@ -1,118 +1,157 @@
 /* Body */
 body {
     margin: 0px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Smythe", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    color: #000000;
 } 
 
 /* Typography */
 
 h1 {
-    color: black;
-    font-size: 40px;
+    font-size: 50px;
 }
 
+h2 {
+    font-size: 30px;
+}
 
 /* Header */
 
 header {
     margin: 0px;
-    padding: 10px;
+    padding: 50px;
     /* text-align: center; */
     background: purple;
+    line-height: 10px;
 }
 
 
 /* Menu */
 
-/* .menuItem {
-    display: flex;
-    flex-direction: column;
-    margin: 0px;
-    padding: 0px;
-    width: auto;
-    align-items: flex-start;
-} */
+.menu {
+    margin: 0px 40px;
+}
 
 .menuList {
     display: flex;
     align-items: center;
-    width: auto;
-    margin: 0px;
-    padding: 0px;
+    border-bottom: solid #D2D2D2 1px;
+    padding: 30px 0px;
+    line-height: 0px;
 }
 
 #emoji {
-    font-size: 70px;
+    font-size: 104px;
+    padding-right: 20px;
 }
 
 .subMenuItems {
     display: flex;
     flex-direction: column;
-    padding: 0px;
-    margin: 0px 0px 0px 10px;
 }
 
 .itemName {
-    font-size: 25px;
+    font-size: 28px;
 }
 
 .itemDescription {
-    font-size: 15px;
+    font-size: 16px;
+    color: #8B8B8B;
 }
 
 .itemPrice {
-    font-size: 20px;
+    font-size: 24px;
 }
 
 .addToOrderBtns {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     border-radius: 50px;
-    border: 1px solid gray;
+    border: 2px solid #DEDEDE;
     background: none;
-    color: black;
+    color: #3C3C3C;
     margin-left: auto;
 }
 
 /* Order Summary */
 
-.orderItemInner {
-    display: flex;
-    margin: 0px;
-    padding: 0px;
-    width: auto;
-    align-items: center;
-    justify-content: space-between;
+#orderSummary {
+    margin: 0px 40px 0px 40px;
 }
 
-.orderInnerLeft {
+.yourOrder {
+    text-align: center;
+    font-size: 28px;
+    margin: 30px 0px 50px 0px;
+}
+
+.orderBtnDiv {
+    padding-top: 10px;
+}
+
+.orderItemInner {
     display: flex;
-    justify-content: flex-start;
     align-items: center;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    line-height: 0px;
 }
 
 .orderItemName {
-    font-size: 20px;
-    padding-right: 15px;
-    
+    font-size: 28px;
+    padding-right: 5px;
 }
 
 .itemRemoveBtn {
-    width: 60px;
-    height: 20px;
-    font-size: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
     background: none;
-    border: 1px solid lightgray;
-    border-radius: 10px;
+    border: none;
+    color: #BBBBBB;
 }
 
-
 .orderItemPrice {
-    justify-content: flex-end;
+    margin-left: auto;
     font-size: 20px;
 }
 
+.orderBtnDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 40px 0px 40px;
+}
 
+#order-btn {
+    background: #16DB99;
+    border: none;
+    border-radius: 1px;
+    color: #FFFFFF;
+    width: 100%;
+    padding: 15px;
+    font-size: 15px;
+}
+
+#totalPriceSection {
+    display: flex;
+    border-top: solid #393333 2px;
+    margin: 0px 40px 0px 40px;
+}
+
+.priceText{
+    font-size: 28px;
+    padding-top: 10px;
+}
+
+.totalPrice {
+    margin-left: auto;
+    font-size: 20px;
+}
 
 /* Payment Modal */
 

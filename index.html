@@ -3,13 +3,16 @@
     <head>
         <link rel="stylesheet" href="index.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&family=MedievalSharp&family=Orbitron&family=Roboto:ital,wght@0,100..900;1,100..900&family=Smythe&display=swap" rel="stylesheet">
     </head>
 
     <body>
 
         <!-- Header -->
         <header>
-            <h1>Lau's Diner</h1>
+            <h1 id="title">Lau's Diner</h1>
             <h2>Insert slogan here</h2>
         </header>
 
@@ -21,10 +24,21 @@
 
         <!-- Order Summary -->
             <div class="orderSummary" id="orderSummary">
-                <!-- order summary goes here -->
+                <div class="yourOrder">Your Order</div>
+                <div class="orderItems" id="orderItems">
+                    <!-- order summary goes here -->
+                </div>
             </div>
 
-            <button id="order-btn">Complete Order</button>
+            <div id="totalPriceSection">
+                <!-- Total price goes here -->
+                 <div class="priceText">Total price:</div>
+                 <div class="totalPrice" id="totalPrice"></div>
+            </div>
+
+            <div class="orderBtnDiv">
+                <button id="order-btn">Complete Order</button>
+            </div>
 
         </main>
 
@@ -35,8 +49,8 @@
 
                 <form id="payment-form">
                     <input type="text" placeholder="Enter your name" name="orderName" id="orderName" required>
-                    <input type="number" placeholder="Enter card number" required>
-                    <input type="number" placeholder="Enter CVV" required>
+                    <input type="number" name="cardNumber" placeholder="Enter card number" required>
+                    <input type="number" name="cvvNumber" placeholder="Enter CVV" required>
                     <button id="pay-btn" type="button">Pay</button>
                 </form>
         </div>
