@@ -30,32 +30,34 @@
                 </div>
             </div>
 
-            <div id="totalPriceSection">
+            <div class="totalPriceSection" id="totalPriceSection">
                 <!-- Total price goes here -->
                  <div class="priceText">Total price:</div>
                  <div class="totalPrice" id="totalPrice"></div>
             </div>
 
             <div class="orderBtnDiv">
-                <button id="order-btn">Complete Order</button>
+                <button class="order-btn" id="order-btn">Complete Order</button>
             </div>
 
         </main>
 
         <!-- Payment Modal -->
-        <div id="payment-modal">
+        <div class="payment-modal" id="payment-modal">
 
-                <h2>Enter Card Details</h2>
+                <h3 class="enterCardDetails">Enter Card Details</h2>
 
                 <form id="payment-form">
-                    <input type="text" placeholder="Enter your name" name="orderName" id="orderName" required>
-                    <input type="number" name="cardNumber" placeholder="Enter card number" required>
-                    <input type="number" name="cvvNumber" placeholder="Enter CVV" required>
-                    <button id="pay-btn" type="button">Pay</button>
+                    <div id="orderBoxes">
+                        <input class="orderBox" type="text" placeholder="Enter your name" name="orderName" id="orderName" required>
+                        <input class="orderBox" type="number" name="cardNumber" placeholder="Enter card number" required>
+                        <input class="orderBox" type="number" name="cvvNumber" placeholder="Enter CVV" required>
+                    </div>
+                    <button id="pay-btn" type="submit">Pay</button>
                 </form>
         </div>
 
-        <div id="thank-you-modal">
+        <div id="thank-you-modal" class="thank-you-modal">
         </div>
         
         <script src="index.js" type="module"></script>

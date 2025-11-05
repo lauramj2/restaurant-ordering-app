@@ -1,72 +1,58 @@
 import { menuArray } from "./data.js"
 
 
-const orderBtn = document.getElementById("order-btn")
+
 const menu = document.getElementById("menu")
 const orderSummary = document.getElementById("orderSummary")
 const priceSummary = document.getElementById("totalPriceSection")
 const orderBtnDiv = document.getElementById("orderBtnDiv")
+const orderBtn = document.getElementById("order-btn")
+const payBtn = document.getElementById("pay-btn")
+const paymentModal = document.getElementById("payment-modal")
+const thankYouModal = document.getElementById("thank-you-modal")
 
 let cart = []
 let totalPrice = 0
 
 
-// const paymentForm = document.getElementById("payment-form")
-// const payBtn = document.getElementById("pay-btn")
-
-
 document.addEventListener("click", function(e){
     if (e.target.dataset.add){
-        // document.getElementById(e.target.dataset.add).parentElement.style.backgroundColor = "lightblue"
         addToOrder(e.target.dataset.add)
     }
     else if (e.target.dataset.remove){
         removeFromOrder(e.target.dataset.remove)
-        // document.getElementById(e.target.dataset.remove).parentElement.style.backgroundColor = "lightblue"
+    }
+    else if (e.target.id === "order-btn"){
+        orderBtn.addEventListener("click", function(){
+            if (cart.length > 0) {
+                paymentModal.style.display="flex"
+                paymentModal.classList.add("paymentShow")
+            }
+        })
+    }
+    else if (e.target.id === "pay-btn"){
+        e.preventDefault()
+        submitPayment()
+        renderThankYou()
     }
 })
 
+function submitPayment(){
+    orderSummary.classList.add("displayNone")
+    orderBtn.classList.add("displayNone")
+    priceSummary.classList.add("displayNone")
+    paymentModal.style.display = "none"
+}
 
-
-
-
-// Complete order button and payment form appear
-
-orderBtn.addEventListener("click", function(){
-    // don't allow oder button to be clicked unless there are items in cart
-
-    // if (list.length.value === 0){
-    //     orderBtn.disabled = true
-    // }
-    
-    const paymentModal = document.getElementById("payment-modal")
-
-    paymentModal.style.display="flex"
-})
-
-
-const payBtn = document.getElementById("pay-btn")
-
-payBtn.addEventListener("click", function(){
+function renderThankYou() {
+    thankYouModal.style.display="flex"
+    thankYouModal.classList.add("thankYouShow")
 
     const orderName = document.getElementById("orderName")
-    const thankYouModal = document.getElementById("thank-you-modal")
 
-    thankYouModal.style.display="flex"
-    
     const thankYouName = orderName.value
-    thankYouModal.innerHTML += `thank you, ${thankYouName}. Your order is on the way.`
-
-    // Hides modal upon submit....not sure if this should be how thats done. need to make it not appear until all fields are filled in 
-
-    const paymentModal = document.getElementById("payment-modal")
-    paymentModal.style.display="none"
-})
-
-
-
-
-
+    thankYouModal.innerHTML += `Thanks, ${thankYouName}! Your order is on its way!`
+}
 
 function addToOrder(itemId){
     const targetMenuObj = menuArray.filter(function(item) {
@@ -154,98 +140,3 @@ function render(){
 }
 
 render()
-
-
-
-
-
-
-
-
-
-
-// // event listener for form that prevents default behaviors and get name input to use in thank you modal
-
-// paymentForm.addEventListener("submit", function(e){
-//     e.preventDefault()
-// }
-
-
-//  return `<ul class="list" id="list" type="list">
-//                     <div class="orderItemInner">
-//                         <div class="orderInnerLeft">
-//                             <p class="orderItemName" data-name="${id}">${name}</p>
-//                             <button class="itemRemoveBtn" data-remove="${id}">Remove</button>
-//                         </div>
-//                         <div class="orderItemPrice">
-//                             <p data-price="${id}">$${price}</p>
-//                         </div>
-//                     </div>
-//                 </ul>`
-//     }).join("")
-
-// const removeBtn = document.getElementsByClassName("itemRemoveBtn")
-
-// removeBtn.addEventListener("click", function(e){
-//     document.getElementById(e.target.id).parentElement.style.backgroundColor = "lightblue"
-// })
-
-
-//<div>
-   // <h3>Total Price: $${totalPrice}</h3>
-//</div>
-
-
-// document.addEventListener("click", function(e){
-//     if (e.target.dataset.add) {
-//         handleAddClick(e.target.dataset.add)
-//     }
-// })
-
-// function handleAddClick(item) {
-//     const targetMenuItem = menuArray.filter(item => {
-//          return item.id === itemId
-//     //looking to see if the id in the data is the same as the is stored in itemId
-//      })[0]
-//     const cart = []
-//     const {name,
-//              price,
-//              id} = targetMenuItem
-//     cart.push(targetMenuItem)
-//     return cart.map(targetMenuItem => {
-//         return document.getElementById("orderSummary").innerHTML += `<ul class="list" type="list">
-//                      <div class="orderItemInner">
-//                          <div class="orderInnerLeft">
-//                              <p class="orderItemName" data-name="${id}">${name}</p>
-//                              <button class="itemRemoveBtn" data-remove="${id}">Remove</button>
-//                          </div>
-//                          <div class="orderItemPrice">
-//                              <p data-price="${id}">$${price}</p>
-//                          </div>
-//                      </div>
-//                  </ul>`
-//      }).join("")
-// }
-
-
-// menu.addEventListener("click", function(e){
-//     // document.getElementById(e.target.id).parentElement.style.backgroundColor = "lightblue"
-//     const purchasedItem = document.getElementById(e.target.id).parentElement
-//     cart.push(purchasedItem)
-//     return document.getElementById("orderSummary").innerHTML = updateCart(cart)
-// })
-
-// function updateCart(cartArr){
-//     return cartArr.map(item => {
-//         const {name,
-//             price,
-//             id} = item
-//         return `<ul class="list" id="list" type="list">
-//                         <div class="orderItemInner">
-//                             <p class="orderItemName" data-name="${id}">${name}</p>
-//                             <button class="itemRemoveBtn" data-remove="${id}">Remove</button>
-//                             <p class="orderItemPrice" data-price="${id}">$${price}</p>
-//                         </div>
-//                 </ul>`
-//     }).join("")
-// }

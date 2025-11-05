@@ -27,6 +27,10 @@ header {
     line-height: 10px;
 }
 
+/* Display none */
+.displayNone {
+    display: none;
+}
 
 /* Menu */
 
@@ -77,7 +81,7 @@ header {
 
 /* Order Summary */
 
-#orderSummary {
+.orderSummary {
     margin: 0px 40px 0px 40px;
 }
 
@@ -127,7 +131,7 @@ header {
     margin: 30px 40px 0px 40px;
 }
 
-#order-btn {
+.order-btn {
     background: #16DB99;
     border: none;
     border-radius: 1px;
@@ -137,7 +141,7 @@ header {
     font-size: 15px;
 }
 
-#totalPriceSection {
+.totalPriceSection {
     display: flex;
     border-top: solid #393333 2px;
     margin: 0px 40px 0px 40px;
@@ -155,32 +159,95 @@ header {
 
 /* Payment Modal */
 
-#payment-modal {
+.payment-modal {
     display: none;
+}
+
+.paymentShow {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 700;
+    font-style: bold;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #FFFFFF;
     flex-direction: column;
     justify-content: center;
-    width: 300px;
-    margin: 0px;
-    padding: 10px;
+    width: 440px;
+    height: 460px;
+    margin: auto;
     text-align: center;
+    border-radius: 2px;
+    border: none;
+    box-shadow: 5.19px 5.19px 255.44px 0px #00000080;
+}
+
+#payment-form {
+    width: 100%;
 }
 
 #pay-btn {
-    width: 50px;
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 30px 20px 20px 20px;
+    background: #16DB99;
+    border: none;
+    border-radius: 2px;
+    color: #FFFFFF;
+}
+
+#orderBoxes {
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.orderBox {
+    height: 50px;
+    width: 90%;
+    border: solid #757575 1px;
+    border-radius: 2px;
+    columns: #757575;
+    padding-left: 20px;
+    font-size: 20px;
+}
+
+.enterCardDetails {
+    margin-bottom: 35px;
+    font-size: 24px;
 }
 
 /* Thank you Modal */
 
-#thank-you-modal {
+.thank-you-modal {
     display: none;
-    flex-direction: column;
-    justify-content: center;
-    width: 300px;
-    margin: 0px;
-    padding: 10px;
-    text-align: center;
 }
 
-.thankYouClass {
-    display: flex;
+.thankYouShow {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #ECFDF5;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    border-radius: 2px;
+    border: none;
+    width: 500px;
+    height: 100px;
+    padding: 10px;
+    text-align: center;
+    color: #065F46;
+    font-size: 32px;
 }
