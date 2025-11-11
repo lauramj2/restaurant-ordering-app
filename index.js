@@ -32,6 +32,7 @@ document.addEventListener("click", function(e){
     }
     else if (e.target.id === "pay-btn"){
         e.preventDefault()
+        clearCart()
         submitPayment()
         renderThankYou()
     }
@@ -42,6 +43,11 @@ function submitPayment(){
     orderBtn.classList.add("displayNone")
     priceSummary.classList.add("displayNone")
     paymentModal.style.display = "none"
+}
+
+function clearCart(){
+    totalPrice = 0
+    renderPriceSection()
 }
 
 function renderThankYou() {
