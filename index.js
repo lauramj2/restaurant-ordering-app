@@ -18,6 +18,12 @@ let totalPrice = 0
 document.addEventListener("click", function(e){
     if (e.target.dataset.add){
         addToOrder(e.target.dataset.add)
+        orderSummary.classList.remove("displayNone")
+        // thankYouModal.classList.remove("thankYouShow")
+        thankYouModal.style.display="none"
+        if (orderBtn.classList.contains("displayNone")){
+            orderBtn.classList.remove("displayNone")
+        }
     }
     else if (e.target.dataset.remove){
         removeFromOrder(e.target.dataset.remove)
@@ -35,6 +41,7 @@ document.addEventListener("click", function(e){
         clearCart()
         submitPayment()
         renderThankYou()
+        document.getElementById("payment-form").reset()
     }
 })
 
@@ -46,8 +53,10 @@ function submitPayment(){
 }
 
 function clearCart(){
+    cart.length = 0
     totalPrice = 0
     renderPriceSection()
+    renderOrderSection()
 }
 
 function renderThankYou() {
@@ -57,7 +66,7 @@ function renderThankYou() {
     const orderName = document.getElementById("orderName")
 
     const thankYouName = orderName.value
-    thankYouModal.innerHTML += `Thanks, ${thankYouName}! Your order is on its way!`
+    thankYouModal.innerHTML = `Thanks, ${thankYouName}! Your order is on its way!`
 }
 
 function addToOrder(itemId){
@@ -123,7 +132,7 @@ function getMenuHtml(menuArr){
                         <div class="subMenuItems">
                             <h2 class="itemName" data-name="${item.id}">${item.name}</h2>
                             <p class="itemDescription">${item.ingredients}</p>
-                            <h3 class="itemPrice" data-price="${item.id}">$${item.price}</3>
+                            <h3 class="itemPrice" data-price="${item.id}">$${item.price}</h3>
                         </div>
                         <button class="addToOrderBtns" data-add="${item.id}"><i class="fa-solid fa-plus"></i></button>
                     </div>

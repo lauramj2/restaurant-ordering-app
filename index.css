@@ -9,8 +9,10 @@ body {
 
 /* Typography */
 
-h1 {
+header h1 {
+    padding-top: 30px;
     font-size: 50px;
+    margin-bottom: 1em;
 }
 
 h2 {
@@ -21,10 +23,14 @@ h2 {
 
 header {
     margin: 0px;
-    padding: 50px;
-    /* text-align: center; */
-    background: purple;
+    padding: 30px;
+    background-image: url("/845364ecacaeaea44c5e3a8cd7159c5d52f26662.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center bottom;
     line-height: 10px;
+    height: 200px;
+    color: #FFFFFF;
 }
 
 /* Display none */
@@ -91,10 +97,6 @@ header {
     margin: 30px 0px 50px 0px;
 }
 
-.orderBtnDiv {
-    padding-top: 10px;
-}
-
 .orderItemInner {
     display: flex;
     align-items: center;
@@ -125,10 +127,11 @@ header {
 }
 
 .orderBtnDiv {
+    padding-top: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 30px 40px 0px 40px;
+    margin: 30px 40px 20px 40px;
 }
 
 .order-btn {
